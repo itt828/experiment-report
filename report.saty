@@ -1,0 +1,49 @@
+@import: cls
+@require: image/image
+@require: enumitem/enumitem
+@require: siunitx/siunitx
+@require: azmath/azmath
+@require: easytable/easytable
+@require:bibyfi/bibyfi
+@require: bibyfi/bibyfi-IEEETran
+@require: base/fn
+@require: chemfml/chemfml
+@require: latexcmds/latexcmds
+
+open Myclass 
+open EasyTableAlias
+open EnumitemAlias
+let bibyfi-theme = BiByFiIEEETran.theme (|
+    name-shrink = true;
+    et-al = true;
+    journal-abbr = [(`European Association for Signal Processing`, `EUSIPCO`)];
+  |)
+let bibs = [
+]
+
+in
+
+document(|
+    hyoshi = {};
+    title = {};
+    author = {};
+    show-toc = true;
+    show-title = false;
+|)'<
+    +clearpage;
+    +section{目的}<
+    >
+    +section{方法}<
+    >
+    +section{結果}<
+    >
+    +section{考察}<
+    >
+    +section{課題}<
+    >
+    +section{結論}<
+    >
+    +section{引用・参考文献}<
+    +makebibliography?:(|sort-references=true; citestyle=CiteAsNumber; name-shrink=true;|)(bibyfi-theme)(bibs);
+    >
+>
